@@ -42,3 +42,5 @@ code .
 ng serve -o
 ```
 
+## How it work
+You can download build Android and Windwos app from [dropmefiles](https://dropmefiles.com/SGuhW) or see live Web on http://212.98.191.79:3030
