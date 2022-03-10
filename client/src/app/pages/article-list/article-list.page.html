@@ -1,0 +1,88 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-searchbar
+      #search
+      placeholder="Поиск"
+      (ionChange)="searchbarChange($event)">
+    </ion-searchbar>
+
+    <ion-buttons slot="end" >
+      <ion-button (click)="toggleFilter()">
+        <ion-icon slot="icon-only" name="funnel-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="article()" *ngIf="isAuthenticated">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <form [formGroup]="filterForm"
+    [ngClass]="{
+    'active': filterShow==true,
+    'inactive': filterShow==false}">
+    <mat-form-field style="padding-top: 1.25em;">
+      <mat-label>Категория</mat-label>
+      <mat-select formControlName="category" [multiple]="false">
+        <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Теги</mat-label>
+      <mat-select formControlName="tags" multiple>
+        <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Интервал</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Начало периода" formControlName="dateFrom" (click)="picker.open()">
+        <input matEndDate placeholder="Конец периода" formControlName="dateTo" (click)="picker.open()">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>
+        </mat-icon>
+      </mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <div class="filter-footer">
+      <ion-button color="warning" (click)="resetFilter()">Очистить
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="tertiary" (click)="applyFilter()">Применить
+        <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </form>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="12" size-sm="6" size-lg="6" *ngFor="let item of dataSource | async">
+            <mat-card class="example-card" (click)="article(item)">
+              <mat-card-header>
+                <div *ngIf="item.heroImage" mat-card-avatar class="example-header-image">
+                  <img [src]="item.heroImage"/>
+                </div>
+                <mat-card-title>{{item.name}}</mat-card-title>
+                <mat-card-subtitle>{{item.date | date}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                {{item.shortDescription}}
+              </mat-card-content>
+            </mat-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <mat-paginator #paginator
+        [pageSizeOptions]="[6, 12, 24]"
+        showFirstLastButtons>
+      </mat-paginator>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-content scrollbar>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Параметры</ion-title>
+      <!-- <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons> -->
+      <ion-buttons slot="end">
+        <ion-button (click)="close()">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-settings-card
+    title="Категории"
+    subtitle="Введите название категории для создания или выберите категорию для редактирования/удаления"
+    controller="categories">
+  </app-settings-card>
+
+  <app-settings-card
+    title="Теги"
+    subtitle="Введите название тега для создания или выберите тег для редактирования/удаления"
+    controller="tags">
+  </app-settings-card>
+
+</ion-content>

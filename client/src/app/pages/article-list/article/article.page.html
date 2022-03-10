@@ -1,0 +1,88 @@
+<ion-content scrollbar>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{title}}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button [hidden]="!articleForm.valid || readonly" (click)="save()">
+          <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+        </ion-button>
+        <ion-button [hidden]="mode!='update' || readonly" (click)="remove()">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="close()">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <form [formGroup]="articleForm">
+      <ion-grid>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="12" size-sm="6" style="height:190px; text-align: center;" (click)="image()">
+            <div *ngIf="articleForm.controls['heroImage'].value; then _img else img"></div>
+            <ng-template #_img>
+              <img [src]="articleForm.controls['heroImage'].value" style="height: 100%; cursor: pointer;"/>
+            </ng-template>
+            <ng-template #img>
+              <ion-icon name="image-outline" style="width: 100%; height: 100%; cursor: pointer;"></ion-icon>
+            </ng-template>
+          </ion-col>
+
+          <ion-col size="12" size-sm="6">
+            <mat-form-field>
+              <mat-label>Название статьи</mat-label>
+              <textarea matInput formControlName="name" [cdkTextareaAutosize]="false" [readonly]="readonly" style="height: 55px;"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Категория</mat-label>
+              <mat-select formControlName="category" [compareWith]="compareCategory" [multiple]="false">
+                <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+              </mat-select>
+              <button *ngIf="category.value"
+                        matSuffix
+                        mat-icon-button
+                        type="button"
+                        aria-label="Clear"
+                        (click)="category.setValue(null); $event.stopPropagation()">
+                  <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Теги</mat-label>
+              <mat-select formControlName="tags" [compareWith]="compareTags" multiple>
+                <mat-option *ngFor="let tag of tags" [value]="tag">{{tag.name}}</mat-option>
+              </mat-select>
+              <button *ngIf="tag.value"
+                    matSuffix
+                    mat-icon-button
+                    type="button"
+                    aria-label="Clear"
+                    (click)="tag.setValue(null); $event.stopPropagation()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </ion-col>
+
+          <ion-col size="12">
+            <mat-form-field>
+              <mat-label>Краткое описание</mat-label>
+              <textarea matInput formControlName="shortDescription" [cdkTextareaAutosize]="true"  [readonly]="readonly"></textarea>
+            </mat-form-field>
+          </ion-col>
+
+          <ion-col size="12">
+            <mat-form-field>
+              <mat-label>Текст статьи</mat-label>
+              <textarea matInput formControlName="description" [cdkTextareaAutosize]="true"  [readonly]="readonly"></textarea>
+            </mat-form-field>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card>
+</ion-content>

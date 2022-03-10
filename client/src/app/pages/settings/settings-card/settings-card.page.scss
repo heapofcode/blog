@@ -1,0 +1,37 @@
+mat-form-field{
+  width: 100%;
+  color:var(--ion-color-tertiary);
+  padding-top: 1.25em;
+  input{
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+
+ion-card-header{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+ion-item{
+  cursor: pointer;
+  --padding-start:0px;
+  --padding-end:0px;
+}
+
+::ng-deep .mat-form-field-flex {
+  padding: 0 .75em 0 .75em !important;
+}
+
+.inactive{
+  opacity: 0;
+  transition: .25s;
+}
+
+.active{
+  opacity: 1;
+  transition: .25s;
+}
+
+
+

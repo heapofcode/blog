@@ -1,0 +1,10 @@
+ion-router-outlet{
+  min-width: 350px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-app{
+  background: linear-gradient(45deg, var(--ion-color-light) 0%, var(--ion-color-tertiary-tint) 100%);
+}

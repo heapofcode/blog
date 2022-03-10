@@ -1,0 +1,47 @@
+<ion-card>
+  <ion-card-title>
+    <div style="position: relative; display: inline-flex; width: 100%;">
+      <p style="margin-left:5px; margin-top: 7px;">{{title}}</p>
+      <div style="margin-left: auto; cursor: pointer; margin-right: 5px; margin-top: 10px;" (click)="toggleContent()">
+        <ion-icon *ngIf="showContent" name="chevron-up-outline"></ion-icon>
+        <ion-icon *ngIf="!showContent" name="chevron-down-outline"></ion-icon>
+      </div>
+    </div>
+  </ion-card-title>
+
+  <ion-card-header [hidden]="!showContent">
+    <ion-card-subtitle>{{subtitle}}</ion-card-subtitle>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <input #matInput matInput formControlName="name" (ngModelChange)="inputChange($event)" placeholder="Название*">
+        <ion-buttons style="position: absolute; top: -20px; right: 5px;">
+          <ion-button *ngIf="name.value && !id.value" (click)="create()">
+            <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="name.value" (click)="clear()">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </mat-form-field>
+    </form>
+  </ion-card-header>
+
+  <ion-card-content [hidden]="!showContent">
+    <ion-list>
+      <ion-item *ngFor="let item of items; let i=index" (click)="selectedItem=i">
+        {{item.name}}
+          <ion-buttons slot="end" [ngClass]="{
+            'active': selectedItem == i,
+            'inactive': selectedItem != i}" >
+            <ion-button (click)="edit(item)">
+              <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="remove(item.id)">
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+
+</ion-card>

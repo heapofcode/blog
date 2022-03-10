@@ -1,0 +1,10 @@
+// ion-header, ion-header ion-toolbar:last-child {
+//   border-top-left-radius: 8px;
+//   border-top-right-radius: 8px;
+//   overflow:hidden;
+// }
+
+ion-toggle {
+  --handle-background-checked: #fff url(/assets/sun.png) no-repeat center / contain;
+  --handle-background: #fff url(/assets/moon.png) no-repeat center / contain;
+}

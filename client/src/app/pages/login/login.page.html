@@ -1,0 +1,32 @@
+<div class="login-content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button color="light" (click)="close()">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-img src="assets/icon/favicon.png"></ion-img>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="login()" [formGroup]="credentials">
+        <mat-form-field style="padding-top: 1.25em;">
+          <mat-label>Пользователь</mat-label>
+          <input type="email" matInput formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Пароль</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+        <ion-button type="submit" expand="block" [disabled]="!credentials.valid" color="tertiary">Войти</ion-button>
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+</div>

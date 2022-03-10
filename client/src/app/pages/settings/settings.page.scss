@@ -1,0 +1,10 @@
+mat-form-field{
+  width: 100%;
+  color:var(--ion-color-tertiary);
+}
+
+ion-header, ion-header ion-toolbar:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow:hidden;
+}

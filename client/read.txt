@@ -1,0 +1,13 @@
+npm i @capacitor-community/electron
+ionic build
+npx cap add @capacitor-community/electron
+npx cap sync electron
+
+==>electron/src/index.ts
+//autoUpdater.checkForUpdatesAndNotify();
+//setupContentSecurityPolicy(myCapacitorApp.getCustomURLScheme());
+
+npx cap add android
+"android": "ionic capacitor build android (sync)"
+
+androidmanifest.xml => android:usesCleartextTraffic="true"

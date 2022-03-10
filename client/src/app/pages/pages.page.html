@@ -1,0 +1,31 @@
+<ion-tabs>
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="reload()">
+          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+        </ion-button>
+        <ion-toggle (ionChange)="toggleTheme($event)"></ion-toggle>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <div *ngIf="isAuthenticated; then userLoggedIn else userLoggedOut"></div>
+        <ng-template #userLoggedIn>
+          <ion-button (click)="settings()">
+            <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+          </ion-button>
+
+          <ion-button (click)="logout()">
+            <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+          </ion-button>
+        </ng-template>
+
+        <ng-template #userLoggedOut>
+          <ion-button (click)="login()">
+            <ion-icon slot="icon-only" name="log-in-outline"></ion-icon>
+          </ion-button>
+        </ng-template>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</ion-tabs>

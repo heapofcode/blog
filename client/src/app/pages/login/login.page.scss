@@ -1,0 +1,31 @@
+.login-content{
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(45deg, var(--ion-color-light) 0%, var(--ion-color-tertiary-tint) 100%);
+}
+
+ion-toolbar{
+  --background: transparent !important;
+}
+
+ion-card{
+  width: 350px;
+  margin: auto;
+  top: 50%;
+  transform: translate(0, -61.5%);
+  background: transparent !important;
+}
+
+mat-form-field{
+  width: 100%;
+  color: var(--ion-color-medium);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ion-color-light);
+}
+
+ion-img{
+  max-width: 250px;
+  margin: auto auto;
+}
+
