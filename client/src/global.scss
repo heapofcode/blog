@@ -48,8 +48,9 @@ ion-modal {
   --height: 100%;
 }
 
-.mat-card-title {
+.mat-card-header .mat-card-title {
   font-size: 16px;
+  word-break: break-all;
 }
 
 .mat-card-subtitle{
