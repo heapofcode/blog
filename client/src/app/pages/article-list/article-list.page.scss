@@ -39,14 +39,25 @@ mat-form-field{
   margin-right: 10px;
 }
 
+.filter-form{
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
 ion-content{
   --background: transparent !important;
 }
 
-ion-header, ion-header ion-toolbar:last-child {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+ion-header{
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+  padding-bottom: 6px;
   overflow:hidden;
+}
+
+ion-toolbar {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 mat-card{
@@ -69,25 +80,4 @@ mat-card:after{
 .example-header-image{
   width: 80px;
   height: 80px;
-}
-
-::-webkit-scrollbar {
-  width: 20px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: red;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
 }

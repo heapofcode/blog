@@ -31,10 +31,27 @@ ion-back-button::part(icon) {
   margin-right: 3px;
 }
 
+.ion-padding{
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-reight: 0px;
+  --padding-start:0px;
+  --padding-end:0px;
+}
+
 ion-content{
   --background: linear-gradient(45deg, var(--ion-color-light) 0%, var(--ion-color-tertiary-tint) 100%);
 }
 
 ion-modal {
   --height: 100%;
+}
+
+.mat-card-title {
+  font-size: 16px;
+}
+
+.mat-card-subtitle{
+  font-size: 12px;
 }

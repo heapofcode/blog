@@ -79,11 +79,10 @@ export class ArticleListPage {
 
     styles.textContent = `
       ::-webkit-scrollbar {
-        width: 12px;
+        width: 1px;
       }
 
       ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey;
         border-radius: 10px;
         background: #fff;
       }
