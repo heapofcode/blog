@@ -7,7 +7,6 @@ You will need the latest Node 16 LTS and NPM 8 installed.
 Make sure you have [node installed and running](https://nodejs.org/en/download/), then install Angular,Ionic and Cordova globally using npm.
 
 ```node
-npm install -g @ionic/cli
 npm install -g @angular/cli
 npm install -g ionic@latest cordova@latest
 ```
