@@ -58,18 +58,31 @@ export class StateService {
     this.initial();
   }
 
-  initial(){
-    this.httpService.query().subscribe(res=>{
-      var articles = <IArticle[]>res[0];
-      var tags = <ITag[]>res[1];
-      var categories = <ICategory[]>res[2];
+  async initial(){
+    const loading = await this.loadingController.create({
+      mode:'ios',
+      cssClass:'loader-css-class',
+    });
+    await loading.present();
 
-      const _state = this.state.value
-      this.state.value = {
-        ... _state,
-        articles, tags, categories
+
+    this.httpService.query().subscribe(
+      async res=>{
+        var articles = <IArticle[]>res[0];
+        var tags = <ITag[]>res[1];
+        var categories = <ICategory[]>res[2];
+
+        const _state = this.state.value
+        this.state.value = {
+          ... _state,
+          articles, tags, categories
+        },
+        await loading.dismiss();
+      },
+      async error=>{
+        await loading.dismiss();
       }
-    })
+    )
   }
 
   articles$: Observable<IArticle[]> = this.state.value$.pipe(
